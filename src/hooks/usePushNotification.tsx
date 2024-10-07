@@ -5,7 +5,9 @@ import { useState } from "react";
 
 const PushNotifications = () => {
   const [value, setValue] = useState<any>();
+  const [loading, setLoading] = useState<boolean>(false);
   const handleClick = () => {
+    setLoading(true);
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/sw.js")
@@ -58,11 +60,24 @@ const PushNotifications = () => {
           setValue(error.message);
         });
     }
+    setLoading(false);
   };
 
   return (
     <>
-      <button onClick={handleClick}>test</button>
+      <button
+        onClick={handleClick}
+        disabled={loading}
+        style={{
+          background: "red",
+          color: "white",
+          padding: "10px",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+      >
+        test
+      </button>
       <p>{value}</p>
     </>
   );
