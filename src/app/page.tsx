@@ -1,8 +1,12 @@
 "use client";
 
-import usePushNotifications from "@/hooks/usePushNotification";
+import PushNotifications from "@/hooks/usePushNotification";
 
 export default function Home() {
-  const a = usePushNotifications();
-  return <main>test {a}</main>;
+  return (
+    <main>
+      test
+      <PushNotifications />
+    </main>
+  );
 }

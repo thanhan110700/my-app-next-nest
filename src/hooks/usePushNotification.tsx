@@ -1,11 +1,11 @@
 "use client";
 
 import { API_URL, APP_KEY } from "@/configs";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const usePushNotifications = () => {
+const PushNotifications = () => {
   const [value, setValue] = useState<any>();
-  useEffect(() => {
+  const handleClick = () => {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("/sw.js").then((registration) => {
         registration?.pushManager?.getSubscription().then((sub) => {
@@ -41,9 +41,14 @@ const usePushNotifications = () => {
         });
       });
     }
-  }, [value]);
+  };
 
-  return value;
+  return (
+    <>
+      <button onClick={handleClick}>test</button>
+      <p>{value}</p>
+    </>
+  );
 };
 
-export default usePushNotifications;
+export default PushNotifications;
