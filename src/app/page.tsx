@@ -5,7 +5,7 @@ import PushNotifications from "@/hooks/usePushNotification";
 export default function Home() {
   return (
     <main>
-      test
+      <p>test</p>
       <PushNotifications />
     </main>
   );
